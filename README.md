@@ -3,14 +3,20 @@ Purpose
 
 The transfomartion AST only will be visited if the annotation "logger" exist on the method.
 Eg:
-The "Logger" annotation have the follwing configuration: @GroovyASTTransformationClass(['AstDemo']).
-So, if the annotation "Logger" is found, transformation AST will be invoked(visited).
-This proccess ocurr on compile phase, by adding *compile(project(':ast')* in dependencies build gradle(or any build managment).
 
-In the class HelloAst, we see that the method with Logger annotation will print **Starting method_name** when starting and
-**Ending method_name** when it terminate.
+The "Logger" annotation has the following configuration:
 
-See more at **ast** module where it's all located the abstract transformation implementation.
+```bash
+@GroovyASTTransformationClass(['AstDemo'])
+```
+
+So, if the annotation "Logger" is found, the transformation AST will be invoking(visited) the target unit.
+This proccess occurs on compile phase, when adding *compile(project(':ast')* in dependencies build gradle(or any build managment).
+
+In the class HelloAst, we see that the method with Logger annotation will print out **Starting method method_name** when starting and
+**Ending method method_name** when it terminates.
+
+See more in **ast** module(directory), where are all the abstract transformation implementations.
 
 Run
 ===========
@@ -20,11 +26,10 @@ gradle clean && \
 gradle build && \
 gradle run
 ```
-
 **output:**
 
 ```bash
-Starting saySomething
+Starting method saySomething
 Hello Ast(Abstract syntax tree)
-Ending saySomething
+Ending method saySomething
 ```

@@ -26,8 +26,8 @@ class AstDemo implements ASTTransformation {
                     method.getAnnotations(new ClassNode(Logger))
             }.each { MethodNode method ->
                 if (!alreadyVisited.contains(method)) {
-                    Statement startMessage = createPrintlnAst("Starting $method.name")
-                    Statement endMessage = createPrintlnAst("Ending $method.name")
+                    Statement startMessage = createPrintlnAst("Starting method $method.name")
+                    Statement endMessage = createPrintlnAst("Ending method $method.name")
                     List existingStatements = method.getCode().getStatements()
                     existingStatements.add(0, startMessage)
                     existingStatements.add(endMessage)
